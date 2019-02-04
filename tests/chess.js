@@ -6,6 +6,11 @@ QUnit.module('Тестируем функцию chess', function () {
 		assert.strictEqual(chess('1'), null);
 	});
 
+	QUnit.test('Размер доски должен быть целочисленным', function (assert) {
+		assert.strictEqual(chess(5.12), null);
+		assert.strictEqual(chess('5.12'), null);
+	});
+
 	QUnit.test('Шахматная доска 2 на 2', function (assert) {
 		const expected =
 			'* \n' +
@@ -21,6 +26,17 @@ QUnit.module('Тестируем функцию chess', function () {
 			'* *\n';
 		assert.strictEqual(chess(3), expected);
 		assert.strictEqual(chess('3'), expected);
+	});
+
+	QUnit.test('Шахматная доска 5 на 5', function (assert) {
+		const expected =
+			'* * *\n' +
+			' * * \n' +
+			'* * *\n' +
+			' * * \n' +
+			'* * *\n';
+		assert.strictEqual(chess(5), expected);
+		assert.strictEqual(chess('5'), expected);
 	});
 
 	QUnit.test('Шахматная доска 8 на 8', function (assert) {
