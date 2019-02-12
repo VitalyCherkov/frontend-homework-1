@@ -15,15 +15,11 @@ const chess = (size) => {
 
 	const parity = size % 2;
 
-	const smartRepeat = (str1, str2) =>
-		`${
-			`${ str1 }${ str2 }`.repeat(size / 2)
-		}${
-			parity ? str1 : ''
-		}`;
+	const smartRepeat = (str1, str2, terminate = '') =>
+		`${ (str1 + str2).repeat(size / 2) }${ parity ? str1 : '' }${ terminate }`;
 
 	return smartRepeat(
-		`${ smartRepeat('*', ' ') }\n`,
-		`${ smartRepeat(' ', '*') }\n`
+		smartRepeat('*', ' ', '\n'),
+		smartRepeat(' ', '*', '\n'),
 	);
 }
